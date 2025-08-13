@@ -37,11 +37,11 @@ window.Game = {
 
         let progress = 0;
         const loadingSteps = [
-            'Loading game systems...',
-            'Preparing pup data...',
-            'Setting up interactions...',
-            'Getting treats ready...',
-            'Almost done...'
+            'Awakening the Royal Court... ✨',
+            'Summoning Princess Alora & Prince Arel... 👑',
+            'Polishing the Royal Crown Jewels... 💎',
+            'Preparing the Royal Palace... 🏰',
+            'The Royal Pets Await Your Command! 🐕👸🤴'
         ];
         
         const progressInterval = setInterval(() => {
@@ -60,7 +60,7 @@ window.Game = {
                 clearInterval(progressInterval);
                 
                 if (loadingText) {
-                    loadingText.textContent = 'Ready to play!';
+                    loadingText.textContent = '✨ The Royal Palace is Ready! ✨';
                 }
                 
                 if (startButton) {
