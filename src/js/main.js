@@ -98,6 +98,12 @@ window.Game = {
     startGame: function() {
         // Initialize game systems
         window.GameState.init();
+        
+        // Initialize sound system
+        if (window.SoundManager) {
+            window.SoundManager.init();
+        }
+        
         this.gameRoot = window.UI.qs('#game-root');
         
         if (!this.gameRoot) {

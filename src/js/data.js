@@ -7,6 +7,7 @@ window.GameData = {
             name: 'Rover',
             breed: 'Golden Retriever',
             emoji: '🐕',
+            image: '../public/assets/pups/rover.svg',
             color: '#F5A623',
             personality: 'Friendly and energetic'
         },

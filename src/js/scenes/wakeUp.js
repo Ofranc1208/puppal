@@ -14,7 +14,7 @@ window.WakeUpScene = {
         container.innerHTML = `
             <h2>Wake up ${pup.name}!</h2>
             <div class="pup-character sleeping" id="sleepy-pup" style="background: linear-gradient(135deg, ${pup.color}, #9013FE);">
-                ${pup.emoji}
+                ${pup.image ? `<img src="${pup.image}" alt="${pup.name}" style="width: 80%; height: 80%; object-fit: contain;">` : pup.emoji}
             </div>
             <p class="pup-status" id="wake-status">
                 💤 ${pup.name} is sleeping peacefully... 
@@ -22,18 +22,37 @@ window.WakeUpScene = {
             <p class="care-subtitle">
                 Swipe left and right to gently wake them up!
             </p>
+            <div style="margin-top: 1rem;">
+                <button class="btn btn-secondary" id="bark-button" style="display: none;">
+                    🐕 Make ${pup.name} Bark!
+                </button>
+            </div>
         `;
 
         gameRoot.appendChild(container);
 
         const pupElement = container.querySelector('#sleepy-pup');
         const statusElement = container.querySelector('#wake-status');
+        const barkButton = container.querySelector('#bark-button');
         
         let isAwake = false;
         let wiggleCount = 0;
 
+        // Add bark button functionality
+        let barkCleanup = null;
+        if (barkButton) {
+            window.UI.addTouchFeedback(barkButton);
+            barkCleanup = window.InputManager.addTap(barkButton, () => {
+                window.UI.playSfx('bark');
+                pupElement.classList.add('bounce');
+                setTimeout(() => {
+                    pupElement.classList.remove('bounce');
+                }, 600);
+            });
+        }
+
         // Add touch drag functionality with wiggle detection
-        const cleanup = window.InputManager.addTouchDrag(pupElement, {
+        const dragCleanup = window.InputManager.addTouchDrag(pupElement, {
             onStart: () => {
                 if (isAwake) return;
                 window.UI.playSfx('tap');
@@ -72,7 +91,7 @@ window.WakeUpScene = {
 
                 // Wake up after enough wiggles
                 if (wiggleCount >= 3) {
-                    this.wakeUpPup(pupElement, statusElement, pup);
+                    this.wakeUpPup(pupElement, statusElement, pup, barkButton);
                     isAwake = true;
                 }
             },
@@ -87,18 +106,25 @@ window.WakeUpScene = {
         // Return cleanup function
         return function cleanup() {
             console.log('Cleaning up WakeUp scene');
-            if (cleanup) cleanup();
+            if (dragCleanup) dragCleanup();
+            if (barkCleanup) barkCleanup();
         };
     },
 
     // Wake up animation and transition
-    wakeUpPup: function(pupElement, statusElement, pup) {
+    wakeUpPup: function(pupElement, statusElement, pup, barkButton) {
         // Remove sleeping class and add waking animation
         pupElement.classList.remove('sleeping');
         pupElement.classList.add('waking-up');
         
         // Update status
         statusElement.textContent = `🌅 Good morning, ${pup.name}!`;
+        
+        // Show bark button
+        if (barkButton) {
+            barkButton.style.display = 'inline-flex';
+            barkButton.classList.add('fade-in');
+        }
         
         // Play wake up sound
         window.UI.playSfx('wakeUp');

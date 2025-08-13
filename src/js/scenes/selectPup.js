@@ -13,7 +13,7 @@ window.SelectPupScene = {
                 ${pups.map(pup => `
                     <div class="pup-card touchable no-select" data-pup-id="${pup.id}" role="button" tabindex="0" aria-label="Select ${pup.name}">
                         <div class="pup-avatar" style="background: linear-gradient(135deg, ${pup.color}, #7ED321);">
-                            ${pup.emoji}
+                            ${pup.image ? `<img src="${pup.image}" alt="${pup.name}" style="width: 100%; height: 100%; object-fit: contain;">` : pup.emoji}
                         </div>
                         <div class="pup-name">${pup.name}</div>
                         <div class="pup-breed">${pup.breed}</div>

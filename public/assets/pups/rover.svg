@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="140" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+  <!-- Golden Retriever Puppy - Rover -->
+  
+  <!-- Body -->
+  <ellipse cx="60" cy="100" rx="28" ry="35" fill="#F4C430" stroke="#D4A017" stroke-width="2"/>
+  
+  <!-- Head -->
+  <ellipse cx="60" cy="50" rx="25" ry="22" fill="#F4C430" stroke="#D4A017" stroke-width="2"/>
+  
+  <!-- Ears -->
+  <ellipse cx="45" cy="38" rx="8" ry="15" fill="#E6AC00" stroke="#D4A017" stroke-width="1.5" transform="rotate(-20 45 38)"/>
+  <ellipse cx="75" cy="38" rx="8" ry="15" fill="#E6AC00" stroke="#D4A017" stroke-width="1.5" transform="rotate(20 75 38)"/>
+  
+  <!-- Inner ears -->
+  <ellipse cx="45" cy="40" rx="4" ry="8" fill="#CD950C" transform="rotate(-20 45 40)"/>
+  <ellipse cx="75" cy="40" rx="4" ry="8" fill="#CD950C" transform="rotate(20 75 40)"/>
+  
+  <!-- Eyes -->
+  <circle cx="52" cy="45" r="5" fill="#FFFFFF"/>
+  <circle cx="68" cy="45" r="5" fill="#FFFFFF"/>
+  <circle cx="52" cy="45" r="3" fill="#2C1810"/>
+  <circle cx="68" cy="45" r="3" fill="#2C1810"/>
+  
+  <!-- Eye shine -->
+  <circle cx="53" cy="44" r="1" fill="#FFFFFF"/>
+  <circle cx="69" cy="44" r="1" fill="#FFFFFF"/>
+  
+  <!-- Nose -->
+  <ellipse cx="60" cy="55" rx="3" ry="2" fill="#2C1810"/>
+  
+  <!-- Mouth -->
+  <path d="M 60 58 Q 55 62 50 60" stroke="#2C1810" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 60 58 Q 65 62 70 60" stroke="#2C1810" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Tongue -->
+  <ellipse cx="60" cy="63" rx="6" ry="4" fill="#FF6B9D" stroke="#E85A8A" stroke-width="1"/>
+  
+  <!-- Front legs -->
+  <ellipse cx="48" cy="115" rx="6" ry="18" fill="#F4C430" stroke="#D4A017" stroke-width="1.5"/>
+  <ellipse cx="72" cy="115" rx="6" ry="18" fill="#F4C430" stroke="#D4A017" stroke-width="1.5"/>
+  
+  <!-- Back legs -->
+  <ellipse cx="45" cy="125" rx="5" ry="12" fill="#F4C430" stroke="#D4A017" stroke-width="1.5"/>
+  <ellipse cx="75" cy="125" rx="5" ry="12" fill="#F4C430" stroke="#D4A017" stroke-width="1.5"/>
+  
+  <!-- Paws -->
+  <ellipse cx="48" cy="133" rx="7" ry="4" fill="#E6AC00" stroke="#D4A017" stroke-width="1"/>
+  <ellipse cx="72" cy="133" rx="7" ry="4" fill="#E6AC00" stroke="#D4A017" stroke-width="1"/>
+  <ellipse cx="45" cy="137" rx="6" ry="3" fill="#E6AC00" stroke="#D4A017" stroke-width="1"/>
+  <ellipse cx="75" cy="137" rx="6" ry="3" fill="#E6AC00" stroke="#D4A017" stroke-width="1"/>
+  
+  <!-- Tail -->
+  <path d="M 35 90 Q 25 85 20 95 Q 25 105 35 100" fill="#F4C430" stroke="#D4A017" stroke-width="1.5"/>
+  
+  <!-- Collar -->
+  <ellipse cx="60" cy="75" rx="30" ry="4" fill="#FF4444" stroke="#CC0000" stroke-width="1"/>
+  
+  <!-- Collar tag -->
+  <circle cx="60" cy="75" r="3" fill="#FFD700" stroke="#DAA520" stroke-width="1"/>
+  
+  <!-- Facial markings -->
+  <ellipse cx="60" cy="48" rx="15" ry="8" fill="#FFEB99" opacity="0.7"/>
+  
+  <!-- Chest marking -->
+  <ellipse cx="60" cy="85" rx="12" ry="8" fill="#FFEB99" opacity="0.7"/>
+</svg>

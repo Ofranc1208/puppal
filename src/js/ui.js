@@ -191,17 +191,13 @@ window.UI = {
             return;
         }
 
-        const soundFile = window.GameData?.sounds[soundName];
-        if (!soundFile) {
-            console.log(`Sound effect placeholder: ${soundName}`);
-            return;
+        // Use the real sound manager
+        if (window.SoundManager) {
+            window.SoundManager.setMuted(!window.GameState.isSoundEnabled());
+            window.SoundManager.play(soundName);
+        } else {
+            console.log(`Sound effect: ${soundName}`);
         }
-
-        // TODO: Replace with actual audio playback when sound files are added
-        console.log(`Playing SFX: ${soundFile}`);
-        
-        // For now, show a visual feedback for sound
-        this.showToast(`🔊 ${soundName}`, 'info', 1000);
     },
 
     // Animation helpers
