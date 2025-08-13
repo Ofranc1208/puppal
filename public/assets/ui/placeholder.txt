@@ -1,0 +1,9 @@
+TODO: Replace with actual UI assets
+- feed-icon.png
+- water-icon.png
+- brush-icon.png
+- clothes-icon.png
+- disc.png
+- bubble.png
+- sparkle.png
+- progress-bar.png

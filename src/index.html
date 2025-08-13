@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Pup Pal - Virtual Pet Game</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+    <!-- Main Game Container -->
+    <div id="app" class="app-container">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text" id="progress-text">Day 1</span>
+            </div>
+            <button class="mute-button" id="mute-button" aria-label="Toggle sound">
+                🔊
+            </button>
+        </header>
+
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="loading-content">
+                <div class="game-logo">
+                    <h1 class="logo-text">Pup Pal</h1>
+                    <div class="logo-subtitle">Virtual Pet Adventure</div>
+                </div>
+                
+                <div class="loading-pups">
+                    <div class="loading-pup bounce" style="animation-delay: 0s;">🐕</div>
+                    <div class="loading-pup bounce" style="animation-delay: 0.2s;">🐕‍🦺</div>
+                    <div class="loading-pup bounce" style="animation-delay: 0.4s;">🦮</div>
+                </div>
+                
+                <div class="loading-bar">
+                    <div class="loading-progress" id="loading-progress"></div>
+                </div>
+                
+                <div class="loading-text" id="loading-text">Loading your pup friends...</div>
+                
+                <button class="btn btn-primary btn-large start-button" id="start-game" style="display: none;">
+                    🎮 Start Adventure
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Game Content -->
+        <main id="game-root" class="game-root" style="display: none;">
+            <!-- Dynamic content will be mounted here by scenes -->
+        </main>
+
+        <!-- Modal for Facts and Messages -->
+        <div id="modal-overlay" class="modal-overlay hidden">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 id="modal-title">Fun Fact!</h3>
+                    <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Dynamic content -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="modal-continue">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/ui.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/scenes/selectPup.js"></script>
+    <script src="js/scenes/wakeUp.js"></script>
+    <script src="js/scenes/care.js"></script>
+    <script src="js/scenes/mission.js"></script>
+    <script src="js/scenes/play.js"></script>
+    <script src="js/mini/disc.js"></script>
+    <script src="js/scenes/bath.js"></script>
+    <script src="js/scenes/bedtime.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

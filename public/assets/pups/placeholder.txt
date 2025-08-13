@@ -1,0 +1,5 @@
+TODO: Replace with actual pup sprites
+- rover.png (Golden Retriever pup)
+- trooper.png (German Shepherd pup) 
+- bluey.png (Blue Heeler pup)
+- Each should have: idle, sleeping, awake, happy, playing states

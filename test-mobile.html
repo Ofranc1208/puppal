@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Pup Pal - Mobile Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 390px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .test-header {
+            background: linear-gradient(135deg, #4A90E2, #7ED321);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .test-content {
+            padding: 20px;
+        }
+        .test-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            border-left: 4px solid #4A90E2;
+        }
+        .test-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+        .test-button:hover {
+            background: #357abd;
+        }
+        .success {
+            border-left-color: #7ED321;
+        }
+        .warning {
+            border-left-color: #F5A623;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🐕 Pup Pal Test Page</h1>
+            <p>Mobile Viewport: 390x844</p>
+        </div>
+        
+        <div class="test-content">
+            <div class="test-item success">
+                <strong>✅ Viewport Test</strong><br>
+                If you can see this properly sized on mobile, the viewport meta tag is working correctly.
+            </div>
+            
+            <div class="test-item success">
+                <strong>✅ Touch Target Test</strong><br>
+                All buttons below should be at least 44px tall for easy tapping.
+            </div>
+            
+            <div class="test-item warning">
+                <strong>⚠️ Server Test</strong><br>
+                Make sure you're running a local server (not file://) for the game to work properly.
+            </div>
+            
+            <a href="src/index.html" class="test-button">
+                🎮 Launch Pup Pal Game
+            </a>
+            
+            <button class="test-button" onclick="testTouch()">
+                👆 Test Touch Interaction
+            </button>
+            
+            <button class="test-button" onclick="testLocalStorage()">
+                💾 Test Local Storage
+            </button>
+            
+            <button class="test-button" onclick="testViewport()">
+                📱 Test Viewport Info
+            </button>
+            
+            <div id="test-results" style="margin-top: 20px; padding: 15px; background: #e8f4f8; border-radius: 8px; display: none;">
+                <strong>Test Results:</strong>
+                <div id="results-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showResults(content) {
+            document.getElementById('test-results').style.display = 'block';
+            document.getElementById('results-content').innerHTML = content;
+        }
+
+        function testTouch() {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const userAgent = navigator.userAgent;
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+            
+            showResults(`
+                <div>Touch Support: ${isTouchDevice ? '✅ Yes' : '❌ No'}</div>
+                <div>Mobile Device: ${isMobile ? '✅ Yes' : '❌ No (desktop)'}</div>
+                <div>Max Touch Points: ${navigator.maxTouchPoints || 'N/A'}</div>
+                <div>User Agent: ${userAgent.substring(0, 50)}...</div>
+            `);
+        }
+
+        function testLocalStorage() {
+            try {
+                localStorage.setItem('pupPalTest', 'test');
+                const retrieved = localStorage.getItem('pupPalTest');
+                localStorage.removeItem('pupPalTest');
+                
+                showResults(`
+                    <div>Local Storage: ${retrieved === 'test' ? '✅ Working' : '❌ Failed'}</div>
+                    <div>Storage Available: ${typeof(Storage) !== "undefined" ? '✅ Yes' : '❌ No'}</div>
+                `);
+            } catch (e) {
+                showResults(`
+                    <div>Local Storage: ❌ Error</div>
+                    <div>Error: ${e.message}</div>
+                `);
+            }
+        }
+
+        function testViewport() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const ratio = window.devicePixelRatio || 1;
+            const orientation = width > height ? 'Landscape' : 'Portrait';
+            
+            showResults(`
+                <div>Viewport: ${width}x${height}</div>
+                <div>Device Pixel Ratio: ${ratio}</div>
+                <div>Orientation: ${orientation}</div>
+                <div>Target: 390x844 (Portrait)</div>
+                <div>Match: ${width <= 400 && height >= 800 ? '✅ Close' : '❌ Different size'}</div>
+            `);
+        }
+
+        // Auto-run basic tests
+        window.addEventListener('load', () => {
+            console.log('Pup Pal Test Page Loaded');
+            console.log('Viewport:', window.innerWidth + 'x' + window.innerHeight);
+            console.log('Touch Support:', 'ontouchstart' in window);
+            console.log('Local Storage:', typeof(Storage) !== "undefined");
+        });
+    </script>
+</body>
+</html>

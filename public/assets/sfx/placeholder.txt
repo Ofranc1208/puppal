@@ -1,0 +1,11 @@
+TODO: Replace with actual sound effects
+- wake-up.mp3
+- feed.mp3
+- water.mp3
+- brush.mp3
+- clothes.mp3
+- cheer.mp3
+- disc-throw.mp3
+- disc-catch.mp3
+- bubble-pop.mp3
+- snore.mp3
