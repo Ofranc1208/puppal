@@ -99,6 +99,11 @@ window.Game = {
         // Initialize game systems
         window.GameState.init();
         
+        // Initialize theme system
+        if (window.ThemeManager) {
+            window.ThemeManager.init();
+        }
+        
         // Initialize sound system
         if (window.SoundManager) {
             window.SoundManager.init();
@@ -111,14 +116,19 @@ window.Game = {
             return;
         }
 
+        // Initialize scene manager
+        if (window.SceneManager) {
+            window.SceneManager.init(this.gameRoot);
+        }
+
         // Set up top bar controls
         this.setupTopBar();
         
         // Start from the current scene in state
         const currentScene = window.GameState.getScene();
-        this.loadScene(currentScene);
+        this.navigateToScene(currentScene);
 
-        console.log('Game started successfully');
+        console.log('Game started successfully with modular architecture');
     },
 
     // Set up top bar controls
@@ -197,9 +207,18 @@ window.Game = {
         window.UI.setProgress(progress);
     },
 
-    // Navigation methods
-    goToScene: function(sceneName) {
-        this.loadScene(sceneName);
+    // Navigation methods - Updated for 2025 architecture
+    goToScene: function(sceneName, data = {}) {
+        this.navigateToScene(sceneName, data);
+    },
+
+    navigateToScene: function(sceneName, data = {}) {
+        if (window.SceneManager) {
+            window.SceneManager.navigateTo(sceneName, data);
+        } else {
+            // Fallback to old method
+            this.loadScene(sceneName);
+        }
     },
 
     // Game flow navigation
@@ -212,9 +231,17 @@ window.Game = {
 
     selectPup: function(pupId) {
         if (window.GameState.selectPup(pupId)) {
-            window.UI.showToast(`${window.GameState.getSelectedPup().name} selected!`, 'success');
+            const selectedPup = window.GameState.getSelectedPup();
+            window.UI.showToast(`${selectedPup.name} selected!`, 'success');
+            
+            // Play selection sound
+            window.UI.playSfx('success');
+            
             setTimeout(() => {
-                this.loadScene('wakeUp');
+                this.navigateToScene('wakeUp', { 
+                    theme: selectedPup.theme || 'royal',
+                    pup: selectedPup 
+                });
             }, 1500);
         }
     },

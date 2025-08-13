@@ -1,63 +1,75 @@
 // Game Data Configuration
 window.GameData = {
-    // Pup definitions
+    // Royal Pet definitions
     pups: {
-        rover: {
-            id: 'rover',
-            name: 'Rover',
-            breed: 'Golden Retriever',
+        alora: {
+            id: 'alora',
+            name: 'Princess Alora',
+            breed: 'Royal Corgi',
             emoji: '🐕',
-            image: '../public/assets/pups/rover.svg',
-            color: '#F5A623',
-            personality: 'Friendly and energetic'
+            image: './assets/pups/alora.svg',
+            color: '#EC4899',
+            personality: 'Graceful and magical',
+            crown: '👑',
+            theme: 'princess'
         },
-        trooper: {
-            id: 'trooper',
-            name: 'Trooper',
-            breed: 'German Shepherd',
+        arel: {
+            id: 'arel',
+            name: 'Prince Arel',
+            breed: 'Noble Shepherd',
             emoji: '🐕‍🦺',
-            color: '#4A90E2',
-            personality: 'Loyal and brave'
+            image: './assets/pups/arel.svg',
+            color: '#6B46C1',
+            personality: 'Brave and noble',
+            crown: '👑',
+            theme: 'prince'
         },
-        bluey: {
-            id: 'bluey',
-            name: 'Bluey',
-            breed: 'Blue Heeler',
+        luna: {
+            id: 'luna',
+            name: 'Duchess Luna',
+            breed: 'Mystic Heeler',
             emoji: '🦮',
-            color: '#7ED321',
-            personality: 'Playful and curious'
+            image: './assets/pups/luna.svg',
+            color: '#9370DB',
+            personality: 'Wise and mysterious',
+            crown: '🌟',
+            theme: 'duchess'
         }
     },
 
-    // Care tasks configuration
+    // Royal care tasks
     careTasks: {
         feed: {
             id: 'feed',
-            name: 'Feed',
-            icon: '🍖',
-            description: 'Give your pup a nutritious meal',
-            duration: 2000
+            name: 'Royal Feast',
+            icon: '🍖✨',
+            description: 'Serve a magnificent royal banquet',
+            duration: 2000,
+            kidFriendly: 'Feed your royal pet delicious food!'
         },
         water: {
             id: 'water',
-            name: 'Water',
-            icon: '💧',
-            description: 'Fresh water for hydration',
-            duration: 1500
+            name: 'Crystal Springs',
+            icon: '💎💧',
+            description: 'Offer pure crystal spring water',
+            duration: 1500,
+            kidFriendly: 'Give fresh water to keep them healthy!'
         },
         brush: {
             id: 'brush',
-            name: 'Brush Teeth',
-            icon: '🪥',
-            description: 'Keep those teeth sparkling clean',
-            duration: 3000
+            name: 'Sparkle Teeth',
+            icon: '🪥✨',
+            description: 'Polish those royal pearly whites',
+            duration: 3000,
+            kidFriendly: 'Brush their teeth to keep them sparkling!'
         },
         clothes: {
             id: 'clothes',
-            name: 'Get Dressed',
-            icon: '👕',
-            description: 'Put on comfortable clothes',
-            duration: 2500
+            name: 'Royal Attire',
+            icon: '👗👑',
+            description: 'Dress in magnificent royal garments',
+            duration: 2500,
+            kidFriendly: 'Help them put on beautiful royal clothes!'
         }
     },
 

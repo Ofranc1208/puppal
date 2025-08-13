@@ -5,27 +5,39 @@ window.SelectPupScene = {
         
         const pups = window.GameData.getAllPups();
         
-        const container = window.UI.createElement('div', 'pup-selection fade-in');
+        const container = window.UI.createElement('div', 'scene-container royal-scene');
         container.innerHTML = `
-            <h1>Choose Your Pup Pal!</h1>
-            <p class="care-subtitle">Select a furry friend to start your adventure</p>
-            <div class="pup-grid" id="pup-grid">
-                ${pups.map(pup => `
-                    <div class="pup-card touchable no-select" data-pup-id="${pup.id}" role="button" tabindex="0" aria-label="Select ${pup.name}">
-                        <div class="pup-avatar" style="background: linear-gradient(135deg, ${pup.color}, #7ED321);">
-                            ${pup.image ? `<img src="${pup.image}" alt="${pup.name}" style="width: 100%; height: 100%; object-fit: contain;">` : pup.emoji}
+            <div class="scene-content">
+                <div class="scene-header">
+                    <h1 class="scene-title">👑 Choose Your Royal Companion!</h1>
+                    <p class="scene-subtitle">Select a noble friend to begin your magical journey</p>
+                </div>
+                
+                <div class="royal-selection-grid" id="pup-grid">
+                    ${pups.map(pup => `
+                        <div class="royal-pet-card kid-friendly-card" data-pup-id="${pup.id}" role="button" tabindex="0" aria-label="Select ${pup.name}">
+                            <div class="pet-image-container" style="background: linear-gradient(135deg, ${pup.color}22, ${pup.color}11);">
+                                <div class="pet-emoji">${pup.emoji}</div>
+                                <div class="pet-crown">${pup.crown}</div>
+                            </div>
+                            <div class="pet-info">
+                                <h3 class="pet-name">${pup.name}</h3>
+                                <p class="pet-breed">${pup.breed}</p>
+                                <p class="pet-personality">${pup.personality}</p>
+                            </div>
+                            <div class="selection-indicator">
+                                <span class="select-text">Tap to Choose</span>
+                            </div>
                         </div>
-                        <div class="pup-name">${pup.name}</div>
-                        <div class="pup-breed">${pup.breed}</div>
-                    </div>
-                `).join('')}
+                    `).join('')}
+                </div>
             </div>
         `;
 
         gameRoot.appendChild(container);
 
         // Add event listeners for pup selection
-        const pupCards = container.querySelectorAll('.pup-card');
+        const pupCards = container.querySelectorAll('.royal-pet-card');
         const cleanupFunctions = [];
 
         pupCards.forEach(card => {
